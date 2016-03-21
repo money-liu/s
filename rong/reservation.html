@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta charset="utf-8" /> 
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /> 
+  <meta content="yes" name="apple-mobile-web-app-capable" /> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
+  <meta content="telephone=no" name="format-detection" /> 
+  <meta content="email=no" name="format-detection" /> 
+  <meta content="" name="pgv" /> 
+  <title>洗衣服务</title> 
+  <link href="css/order.css" rel="stylesheet" type="text/css" /> 
+  <link href="css/base.css" rel="stylesheet" type="text/css" /> 
+  <script src="js/jquery.min.js"></script> 
+
+ </head> 
+ <body class=" Bg-gray "> 
+  <div class=""> 
+   <div class="tip_bar"> 
+    <span class="color_8a8a8a">预约成功请等待小e上门取件</span> 
+    <a id="price-link" href="javascript:void(0);" data-price-url="cloth_prices.html"> <em class="priceColor ">查看价目</em> </a> 
+   </div> 
+   <div class="wrap_index"> 
+    <!-- 有常用地址 --> 
+    <div class="add_bg"></div> 
+    <section class="address-handle section" id="address-handle"> 
+     <span class="arrow-left" style="top:44%"></span> 
+     <div class=" wuliu-div"> 
+      <img src="images/icon_name.png" />东风 
+     </div> 
+     <div class=" wuliu-div"> 
+      <img src="images/icon_phone.png" />13795257303 
+     </div> 
+     <div class="clearBoth"></div> 
+     <div class="address_detail"> 
+      <div class=" wuliu-div textOverflow2"> 
+       <img src="images/icon_location.png" />桃浦一村 301室 
+      </div> 
+     </div> 
+    </section> 
+    <div class="add_bg"></div> 
+    <div class="p5"></div> 
+    <!-- 取件时间 start --> 
+    <section class="section" id="time-handle"> 
+     <div class="time_icon icon_gray"></div> 
+     <div id="J_shipDateTemplateWrapper"> 
+      <div class="m_input J_shipTimeContainer"> 
+       <div class="selectBox selectcont y_hover"> 
+        <div class="Selected selectBx" id="select_datetime">
+          请选择取件时间 
+        </div> 
+        <span class="arrow-left" style="top:36%"></span> 
+        <span class="suishikequ" id="take_soon_icon" style="display:none;"> <img src="images/suishikequ.png" /> </span> 
+       </div> 
+      </div> 
+     </div> 
+    </section> 
+    <!-- 取件时间 end --> 
+    <div class="borderD"></div> 
+    <section> 
+     <textarea class="textarea" id="comment" onfocus="this.style.color='#3e3e3e';" style="color:#c1c1c1" maxlength="50" placeholder="如有其他问题，请留言"></textarea> 
+    </section> 
+    <div class="borderD2"></div> 
+   </div> 
+   <div class="tuijian_coupon"> 
+   </div> 
+   <div class="p30"></div> 
+   <!-- 立即预约 start --> 
+   <div class="order_bottom"> 
+    <form action="javascript:void(0);" method="POST" syle="padding-top:5px"> 
+     <button id="order-btn" class="btn_order noBook " disabled="disabled"> 立即预约</button> 
+    </form> 
+    <div class="delivery_fee"> 
+     <ul> 
+      <li>袋洗每人每周限一袋（不含窗帘）</li> 
+      <li>订单金额满 20 元免运费；订单金额不满 20 元收取 10 元运费；订单金额不满 10 元收取 20 元运费</li> 
+     </ul> 
+    </div> 
+   </div> 
+   <!-- 立即预约 end --> 
+   <!-- 引导下单品类 start --> 
+   <div class="tuijian_rukou"> 
+    <a href="luxury_prices.html"><span style="color: #818181">高档衣物洗涤推荐选择［高端服饰家纺］</span></a> 
+    <span class="arrow-left"></span> 
+   </div> 
+   <!-- 引导下单品类 end --> 
+   <!-- 信息提示浮层 start --> 
+   <!--<div id="codFloat" style="height:60px" class="cod"> 
+    <div class="wx_mask"></div> 
+    <div class="wx_confirm "> 
+     <div class="wx_confirm_inner" id="wx_confirm_float"> 
+      <div class="wx_confirm_hd"> 
+       <div class="wx_confirm_tit" id="show_mes" style="font-size: 14px; line-height: 22px"> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> -->
+   <!-- 信息提示浮层 end --> 
+   <!-- 预约成功浮层 start --> 
+   <div id="order_success" class="order_success" style="display:none"> 
+    <em><b></b></em> 
+    <span id="success_tip" style="padding-left:10px">预约成功</span> 
+    <p>请等待小e上门取件计价</p> 
+   </div> 
+   <!-- 预约失败浮层 end --> 
+  </div> 
+  <!-- 时间控件 start --> 
+  <div id="time_controler_outer" class="timeControl" style="height:0px;"> 
+   <div class="wx_mask" id="wx_mask" style="display:none;"></div> 
+   <div class=" wx_timeControl" id="time_controler_inner"> 
+    <div class="time_title"> 
+     <span class="time_cancel" onclick="closeControl()">取消</span> 
+     <span class="time_finish " onclick="finishControl()">完成</span> 
+    </div> 
+    <ul class="time_date"> 
+     <li class="detail_date tab-current" id="date_li_2015-12-15" serv_date="2015-12-15" date_text="12月15日 今天" selectable="selectable"> <p>今天</p> <p>12月15日</p> </li> 
+     <li class="detail_date tab-current" id="date_li_2015-12-16" serv_date="2015-12-16" date_text="12月16日 明天" selectable="selectable"> <p>明天</p> <p>12月16日</p> </li> 
+     <li class="detail_date tab-current" id="date_li_2015-12-17" serv_date="2015-12-17" date_text="12月17日 周四" selectable="selectable"> <p>周四</p> <p>12月17日</p> </li> 
+     <li class="detail_date tab-current" id="date_li_2015-12-18" serv_date="2015-12-18" date_text="12月18日 周五" selectable="selectable"> <p>周五</p> <p>12月18日</p> </li> 
+     <li class="detail_date tab-current" id="date_li_2015-12-19" serv_date="2015-12-19" date_text="12月19日 周六" selectable="selectable"> <p>周六</p> <p>12月19日</p> </li> 
+     <li class="detail_date tab-current" id="date_li_2015-12-20" serv_date="2015-12-20" date_text="12月20日 周日" selectable="selectable"> <p>周日</p> <p>12月20日</p> </li> 
+     <li class="detail_date tab-current" id="date_li_2015-12-21" serv_date="2015-12-21" date_text="12月21日 周一" selectable="selectable"> <p>周一</p> <p>12月21日</p> </li> 
+     <!-- <li class="bluebar"></li> --> 
+     <div class="borderD"></div> 
+    </ul> 
+    <div class="time_change"> 
+     <!-- 随时可取 start --> 
+     <div id="take_soon_wrap" class="anytime_kequ"> 
+      <div class="kequ"> 
+       <input id="tmp_soon" type="checkbox" value="1" /> 
+       <label for="tmp_soon"><b></b></label> 
+      </div> 
+      <label for="tmp_soon" class="take_word">下单后立即上门取件</label> 
+     </div> 
+     <!-- 随时可取 end --> 
+     <ul class="time_hour" id="time_ul_2015-12-15" style="display:none;"> 
+      <li class="detail_hour baodan" id="time_li_2015-12-15_10:00-12:00" serv_time="10:00-12:00" time_text="10:00-12:00" back_text=""> 10:00-12:00 </li> 
+      <li class="detail_hour baodan" id="time_li_2015-12-15_12:00-14:00" serv_time="12:00-14:00" time_text="12:00-14:00" back_text=""> 12:00-14:00 </li> 
+      <li class="detail_hour baodan" id="time_li_2015-12-15_14:00-16:00" serv_time="14:00-16:00" time_text="14:00-16:00" back_text=""> 14:00-16:00 </li> 
+      <li class="detail_hour baodan" id="time_li_2015-12-15_16:00-18:00" serv_time="16:00-18:00" time_text="16:00-18:00" back_text=""> 16:00-18:00 </li> 
+      <li class="detail_hour baodan" id="time_li_2015-12-15_18:00-20:00" serv_time="18:00-20:00" time_text="18:00-20:00" back_text=""> 18:00-20:00 </li> 
+      <li class="detail_hour baodan" id="time_li_2015-12-15_20:00-22:00" serv_time="20:00-22:00" time_text="20:00-22:00" back_text=""> 20:00-22:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-15_22:00-24:00" serv_time="22:00-24:00" time_text="22:00-24:00" back_text="" selectable="selectable"> 22:00-24:00 </li> 
+     </ul> 
+     <ul class="time_hour" id="time_ul_2015-12-16" style="display:none;"> 
+      <li class="detail_hour " id="time_li_2015-12-16_10:00-12:00" serv_time="10:00-12:00" time_text="10:00-12:00" back_text="" selectable="selectable"> 10:00-12:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-16_12:00-14:00" serv_time="12:00-14:00" time_text="12:00-14:00" back_text="" selectable="selectable"> 12:00-14:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-16_14:00-16:00" serv_time="14:00-16:00" time_text="14:00-16:00" back_text="" selectable="selectable"> 14:00-16:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-16_16:00-18:00" serv_time="16:00-18:00" time_text="16:00-18:00" back_text="" selectable="selectable"> 16:00-18:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-16_18:00-20:00" serv_time="18:00-20:00" time_text="18:00-20:00" back_text="" selectable="selectable"> 18:00-20:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-16_20:00-22:00" serv_time="20:00-22:00" time_text="20:00-22:00" back_text="" selectable="selectable"> 20:00-22:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-16_22:00-24:00" serv_time="22:00-24:00" time_text="22:00-24:00" back_text="" selectable="selectable"> 22:00-24:00 </li> 
+     </ul> 
+     <ul class="time_hour" id="time_ul_2015-12-17" style="display:none;"> 
+      <li class="detail_hour " id="time_li_2015-12-17_10:00-12:00" serv_time="10:00-12:00" time_text="10:00-12:00" back_text="" selectable="selectable"> 10:00-12:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-17_12:00-14:00" serv_time="12:00-14:00" time_text="12:00-14:00" back_text="" selectable="selectable"> 12:00-14:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-17_14:00-16:00" serv_time="14:00-16:00" time_text="14:00-16:00" back_text="" selectable="selectable"> 14:00-16:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-17_16:00-18:00" serv_time="16:00-18:00" time_text="16:00-18:00" back_text="" selectable="selectable"> 16:00-18:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-17_18:00-20:00" serv_time="18:00-20:00" time_text="18:00-20:00" back_text="" selectable="selectable"> 18:00-20:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-17_20:00-22:00" serv_time="20:00-22:00" time_text="20:00-22:00" back_text="" selectable="selectable"> 20:00-22:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-17_22:00-24:00" serv_time="22:00-24:00" time_text="22:00-24:00" back_text="" selectable="selectable"> 22:00-24:00 </li> 
+     </ul> 
+     <ul class="time_hour" id="time_ul_2015-12-18" style="display:none;"> 
+      <li class="detail_hour " id="time_li_2015-12-18_10:00-12:00" serv_time="10:00-12:00" time_text="10:00-12:00" back_text="" selectable="selectable"> 10:00-12:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-18_12:00-14:00" serv_time="12:00-14:00" time_text="12:00-14:00" back_text="" selectable="selectable"> 12:00-14:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-18_14:00-16:00" serv_time="14:00-16:00" time_text="14:00-16:00" back_text="" selectable="selectable"> 14:00-16:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-18_16:00-18:00" serv_time="16:00-18:00" time_text="16:00-18:00" back_text="" selectable="selectable"> 16:00-18:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-18_18:00-20:00" serv_time="18:00-20:00" time_text="18:00-20:00" back_text="" selectable="selectable"> 18:00-20:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-18_20:00-22:00" serv_time="20:00-22:00" time_text="20:00-22:00" back_text="" selectable="selectable"> 20:00-22:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-18_22:00-24:00" serv_time="22:00-24:00" time_text="22:00-24:00" back_text="" selectable="selectable"> 22:00-24:00 </li> 
+     </ul> 
+     <ul class="time_hour" id="time_ul_2015-12-19" style="display:none;"> 
+      <li class="detail_hour " id="time_li_2015-12-19_10:00-12:00" serv_time="10:00-12:00" time_text="10:00-12:00" back_text="" selectable="selectable"> 10:00-12:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-19_12:00-14:00" serv_time="12:00-14:00" time_text="12:00-14:00" back_text="" selectable="selectable"> 12:00-14:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-19_14:00-16:00" serv_time="14:00-16:00" time_text="14:00-16:00" back_text="" selectable="selectable"> 14:00-16:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-19_16:00-18:00" serv_time="16:00-18:00" time_text="16:00-18:00" back_text="" selectable="selectable"> 16:00-18:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-19_18:00-20:00" serv_time="18:00-20:00" time_text="18:00-20:00" back_text="" selectable="selectable"> 18:00-20:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-19_20:00-22:00" serv_time="20:00-22:00" time_text="20:00-22:00" back_text="" selectable="selectable"> 20:00-22:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-19_22:00-24:00" serv_time="22:00-24:00" time_text="22:00-24:00" back_text="" selectable="selectable"> 22:00-24:00 </li> 
+     </ul> 
+     <ul class="time_hour" id="time_ul_2015-12-20" style="display:none;"> 
+      <li class="detail_hour " id="time_li_2015-12-20_10:00-12:00" serv_time="10:00-12:00" time_text="10:00-12:00" back_text="" selectable="selectable"> 10:00-12:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-20_12:00-14:00" serv_time="12:00-14:00" time_text="12:00-14:00" back_text="" selectable="selectable"> 12:00-14:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-20_14:00-16:00" serv_time="14:00-16:00" time_text="14:00-16:00" back_text="" selectable="selectable"> 14:00-16:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-20_16:00-18:00" serv_time="16:00-18:00" time_text="16:00-18:00" back_text="" selectable="selectable"> 16:00-18:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-20_18:00-20:00" serv_time="18:00-20:00" time_text="18:00-20:00" back_text="" selectable="selectable"> 18:00-20:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-20_20:00-22:00" serv_time="20:00-22:00" time_text="20:00-22:00" back_text="" selectable="selectable"> 20:00-22:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-20_22:00-24:00" serv_time="22:00-24:00" time_text="22:00-24:00" back_text="" selectable="selectable"> 22:00-24:00 </li> 
+     </ul> 
+     <ul class="time_hour" id="time_ul_2015-12-21" style="display:none;"> 
+      <li class="detail_hour " id="time_li_2015-12-21_10:00-12:00" serv_time="10:00-12:00" time_text="10:00-12:00" back_text="" selectable="selectable"> 10:00-12:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-21_12:00-14:00" serv_time="12:00-14:00" time_text="12:00-14:00" back_text="" selectable="selectable"> 12:00-14:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-21_14:00-16:00" serv_time="14:00-16:00" time_text="14:00-16:00" back_text="" selectable="selectable"> 14:00-16:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-21_16:00-18:00" serv_time="16:00-18:00" time_text="16:00-18:00" back_text="" selectable="selectable"> 16:00-18:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-21_18:00-20:00" serv_time="18:00-20:00" time_text="18:00-20:00" back_text="" selectable="selectable"> 18:00-20:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-21_20:00-22:00" serv_time="20:00-22:00" time_text="20:00-22:00" back_text="" selectable="selectable"> 20:00-22:00 </li> 
+      <li class="detail_hour " id="time_li_2015-12-21_22:00-24:00" serv_time="22:00-24:00" time_text="22:00-24:00" back_text="" selectable="selectable"> 22:00-24:00 </li> 
+     </ul> 
+    </div> 
+    <div class="kongbai" id="kongbai"></div> 
+   </div> 
+  </div> 
+  <script type="text/javascript">
+var 
+  service_time_usable = 1,
+  $timeControlerOuter = $("#time_controler_outer"),
+  $timeControlerInner = $("#time_controler_inner"),
+  $wxMask = $("#wx_mask"),
+  
+  $dateUl = $('ul.time_date'),
+  $dateLi = $('ul.time_date li'),
+  $timeUl = $('ul.time_hour'),
+  $timeLi = $('li.detail_hour'),
+  $takeSoonIcon = $('#take_soon_icon');
+  
+  $tmpDate = $('#tmp_date'),
+  $tmpTime = $('#tmp_time'),
+  $tmpSoon = $('#tmp_soon'),
+  $tmpBack = $('#tmp_back'),
+
+  $dateText = $('#date_text'),
+  $timeText = $('#time_text'),
+
+  $dateInput = $('#washing_date'),
+  $timeInput = $('#washing_time'),
+  $soonInput = $('#take_soon'),
+  $takeSoonWrap = $('#take_soon_wrap');
+    
+$(function(){
+  // 选择服务日期
+  $dateLi.on('click', function(){
+    selectDate($(this));
+  });
+  // 选择服务时段
+  $timeLi.on('click', function(){
+    selectTime($(this));
+    });
+  // 选中/取消 "随时可取"
+    $takeSoonWrap.on('click',function(){
+        takeSoonToggle();
+    });
+});
+
+// 初始化服务日期时段
+function initDateTime(){
+  var date_sel = $dateInput.val();
+    var time_sel = $timeInput.val();
+    if(date_sel){
+        var $dateLiSel = $dateLi.filter('#date_li_' + date_sel);
+        $dateLiSel.trigger('click');
+        if(time_sel){
+            var $timeLiSel = $(document.getElementById('time_li_' + date_sel + '_' + time_sel));
+            $timeLiSel.trigger('click');
+            $tmpSoon.prop('checked') ? $takeSoonWrap.addClass('anyBorder') : $takeSoonWrap.removeClass('anyBorder');
+        }
+    }
+}
+
+// 打开时间控件
+function openControl() {
+  if(!service_time_usable){
+    showTip('预约时间有误，请稍后再试');
+    return;
+  }
+  initDateTime();
+    $wxMask.show();
+    $timeControlerInner.animate({bottom:"0"}, 400);
+    $timeControlerOuter.slideDown();
+}
+
+// 取消并关闭时间控件
+function closeControl() {
+  $tmpDate.val('');
+  $tmpTime.val('');
+  $tmpSoon.prop('checked', false);
+  $takeSoonWrap.removeClass('anyBorder');
+  $tmpBack.val('');
+  $dateText.val('');
+  $timeText.val('');
+    $timeControlerInner.animate({bottom:"-500"}, 400);
+    $wxMask.hide();
+}
+
+// 确认选中服务日期时段
+function finishControl(){
+    var date_text = $dateText.val();
+    var time_text = $timeText.val();
+    if(!date_text || !time_text){
+        return;
+    }
+    $dateInput.val($tmpDate.val());
+    $timeInput.val($tmpTime.val());
+    fillDateTimeText(date_text, time_text);
+    if(category_id == 13){
+        var back_text = $tmpBack.val();
+        fillBackTime(back_text);    
+    }else{
+        if($tmpSoon.prop('checked')){
+            $soonInput.val(1);
+            $takeSoonWrap.addClass('anyBorder')  
+            $takeSoonIcon.css({'display':'block'});
+        }else{
+            $soonInput.val('');
+            $takeSoonWrap.removeClass('anyBorder');
+            $takeSoonIcon.css({'display':'none'});
+        }
+    }
+    closeControl();
+    if(category_id == 13){
+      setHotelOrderBtn();
+    }else{
+      setOrderBtn();
+    }
+}
+
+// 选择服务日期
+function selectDate(selD){
+    $tmpDate.val(selD.attr('serv_date'));
+    $dateText.val(selD.attr('date_text'));
+    $tmpTime.val('');
+    $tmpSoon.prop('checked', false);
+    $takeSoonWrap.removeClass('anyBorder');
+    $timeText.val('');
+    $timeLi.removeClass('select_hour');
+    $timeLi.removeClass('e_canBook');
+    var index = selD.index();
+              selD.addClass('date_checked').siblings().removeClass('date_checked');
+       
+   
+    selD.addClass('tab-current').siblings().removeClass('tab-current');
+    $timeUl.eq(index).show().siblings().hide();
+    var index = selD.index();
+    var selDWidth = selD.width(); //选中日期节点宽度
+    $dateUl.scrollLeft(selDWidth * (index - 1)); //设置选中日期显示位置
+    if(category_id != 13){
+         isShowTakeSoon();
+    }
+}
+
+// 选择服务时段
+function selectTime(selT){
+    if(!selT.attr('selectable') || selT.hasClass('select_hour')){
+        return;
+    }
+    $tmpSoon.prop('checked', false);
+    $tmpTime.val(selT.attr('serv_time'));
+    $timeText.val(selT.attr('time_text'));
+            selT.addClass('select_hour').siblings().removeClass('select_hour');
+        
+    if(category_id == 13){
+        setBackTime(selT);
+    }else{
+      if(isShowTakeSoon()){
+        selectSoon();
+      }
+    }
+}
+
+// 填充服务日期时段
+function fillDateTimeText(date_text, time_text){
+  if(!date_text || !time_text){
+    $('#select_datetime').html('请选择取件时间').css({'color':'#c1c1c1'});
+  }else{
+    $('#select_datetime').html(date_text + ' ' + time_text).css({'color':'#3e3e3e'});
+  }
+}
+
+// 是否显示随时可取
+function isShowTakeSoon(){
+    var date_value = $tmpDate.val();
+    var time_value = $tmpTime.val();
+    // 判断是否显示“随时可取”
+    var first_date =  $dateLi.filter('[selectable]').eq(0).attr('serv_date');
+    var first_time = $timeUl.filter('#time_ul_' + first_date).find('li[selectable]').attr('serv_time');
+    if(date_value == first_date && time_value == first_time){
+        $takeSoonWrap.show();
+        $('#kongbai').hide();
+        return true;
+    }else{
+      $tmpSoon.prop('checked', false);
+        $takeSoonWrap.removeClass('anyBorder');
+        $takeSoonWrap.hide();
+        $('#kongbai').show();
+        return false;
+    }
+}
+    
+// 选择随时可取
+function selectSoon(){
+    var soon_sel = $soonInput.val();
+    $tmpSoon.prop('checked', soon_sel ? true : false);
+    $tmpSoon.prop('checked') ? $takeSoonWrap.addClass('anyBorder')  
+               :  $takeSoonWrap.removeClass('anyBorder');
+    $takeSoonIcon.css({'display': soon_sel ? 'block' : 'none'});
+}
+
+// 设置快洗送回时间
+function setBackTime(selT){
+  var back_text = selT.attr('back_text');
+  if(back_text){
+    $tmpBack.val(back_text);
+  }
+}
+
+// 填充服务日期时段
+function fillBackTime(back_text){
+    if(back_text){
+        $('#back_time_tip').html(back_text);
+    }else{
+      $('#back_time_tip').html('');
+    }
+}
+
+// 提交按钮状态
+function setOrderBtn(){
+    var date_value = $dateInput.val();
+    var time_value = $timeInput.val();
+    if(date_value && time_value && address_id){
+                  $('#order-btn').prop("disabled", false).removeClass("noBook").addClass("canBook");
+            }else{
+               $('#order-btn').prop("disabled", true).removeClass("canBook").addClass("noBook");
+            }
+}
+ 
+// 随时可取边框
+function takeSoonToggle() {
+  $tmpSoon.prop('checked', !$tmpSoon.prop('checked'));
+  $tmpSoon.prop('checked') ? $takeSoonWrap.addClass('anyBorder')  
+   :  $takeSoonWrap.removeClass('anyBorder');
+ }
+</script> 
+  <!-- 时间控件 end --> 
+  <!--  小e管家  --> 
+  <script type="text/javascript">
+var 
+  $priceLink = $('#price-link'),
+  $addressHandle = $('#address-handle'),
+  $clothesIds = $('#clothes_ids'),
+  $cateroriesIds = $('#categories_ids'),
+  $timeHandle = $("#time-handle"),
+  $addressInput = $('#address_id'), 
+  $dateInput = $('#washing_date'), 
+  $timeInput = $('#washing_time'),
+  $soonInput = $('#take_soon'),
+  $commentText = $("#comment"),
+  $orderBtn = $('#order-btn');
+
+// 点击价目链接
+$priceLink.one('click', redirectPrice);
+// 填充地址
+$addressHandle.one('click', fillAddr);
+// 打开时间控件
+$timeHandle.on('click', openControl);
+// 点击预约按钮
+$orderBtn.on('click', sumitOrder);
+
+// 跳转价目页链接
+function redirectPrice(){
+    var price_url = $(this).data('price-url');
+    if(!price_url){
+        return;
+    }
+    var 
+      address_id = $addressInput.val(), 
+      clothes_ids = $clothesIds.val(),
+      categories_ids = $cateroriesIds.val(),
+      date_val = $dateInput.val(), 
+      time_val = $timeInput.val(),
+      soon_val = $soonInput.val(),
+      comment_val = $commentText.val();
+    if(address_id){
+        price_url += '&address_id=' + address_id;
+    }
+    if(clothes_ids){
+        price_url += '&clothes_ids=' + clothes_ids;
+    }
+    if(categories_ids){
+        price_url += '&categories_ids=' + categories_ids;
+    }
+    if(date_val){
+        price_url += '&washing_date=' + date_val;
+    }
+    if(time_val){
+        price_url += '&washing_time=' + time_val;
+    }
+    if(soon_val){
+        price_url += '&take_soon=' + soon_val;
+    }
+    if(comment_val){
+        price_url += '&comment=' + encodeURIComponent(comment_val);
+    }
+    window.location.href = price_url;
+    setTimeout(function(){
+        $(this).one('click', redirectPrice);
+    }, 2000);
+    return;
+}
+
+// 填充地址
+function fillAddr(){
+    if(!select_addr_url){
+        return;
+    }
+    var 
+      get_addr_url = select_addr_url,
+      clothes_ids = $clothesIds.val(),
+      categories_ids = $cateroriesIds.val(),
+      date_val = $dateInput.val(), 
+      time_val = $timeInput.val(),
+      soon_val = $soonInput.val(),
+      comment_val = $commentText.val();
+    if(clothes_ids){
+      get_addr_url += '&clothes_ids=' + clothes_ids;
+    }
+    if(categories_ids){
+      get_addr_url += '&categories_ids=' + categories_ids;
+    }
+    if(date_val){
+        get_addr_url += '&washing_date=' + date_val;
+    }
+    if(time_val){
+        get_addr_url += '&washing_time=' + time_val;
+    }
+    if(soon_val){
+        get_addr_url += '&take_soon=' + soon_val;
+    }
+    if(comment_val){
+        get_addr_url += '&comment=' + encodeURIComponent(comment_val);
+    }
+    window.location.href = get_addr_url;
+    setTimeout(function(){
+        $(this).one('click', fillAddr);
+    }, 2000);
+    return;
+}
+            
+// 校验提交表单，提交订单预约
+function sumitOrder(){
+    var 
+      address_id = $addressInput.val(),
+      clothes_ids = $clothesIds.val(),
+      categories_ids = $cateroriesIds.val(),
+      date_val = $dateInput.val(), 
+      time_val = $timeInput.val(),
+      soon_val = $soonInput.val(),
+      comment_val = $commentText.val();
+    if(!address_id){
+        showTip('请添加/选择地址');
+        return;
+    }
+    if(!date_val){
+        showTip('请选择服务日期');
+        return;
+    }
+    if(!time_val){
+        showTip('请选择服务时段');
+        return;
+    }
+             $orderBtn.text('正在提交').prop("disabled",true).addClass("noBook").removeClass('canBook');
+      
+    var submit_url = "mobile.php?m=wap&act=homepage&do=do_order&city_id=2&mark=66d5e0da-65b8-11e5-a990-5cb901892a54";
+    var submit_data = {
+            category_id : category_id,
+            sub_id : sub_id,
+            clothes_ids : clothes_ids,
+            categories_ids : categories_ids,
+            address_id : address_id,
+            washing_date : date_val,
+            washing_time : time_val,
+            take_soon : soon_val,
+            comment : comment_val
+          };
+    $.post(submit_url, submit_data, function(data){
+          if(data.message.state == 1){
+                           $orderBtn.text('预约成功').prop("disabled",true).removeClass("canBook").addClass("noBook");
+                   
+            alertToUrl(data.message.url,'预约成功');
+          }else{
+                            $orderBtn.text('立即预约').prop("disabled",false).removeClass("noBook").addClass("canBook");
+              
+            showTip(data.message.msg);
+          }
+    },"json"); 
+}
+
+function showTip(msg){
+    $('#show_mes').html(msg);
+    $('#codFloat').show().delay(2000).hide(0);
+    return;
+}
+
+function alertToUrl(url,title) {
+    if(title){
+        $("#success_tip").text(title);
+    }
+    $("#order_success").show();
+    setTimeout("window.location.href='" + url + "'", 2000);
+    return;
+}
+
+$('.highOrder').height($(window).height()-20);
+</script> 
+ </body>
+</html>

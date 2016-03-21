@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta charset="utf-8" /> 
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /> 
+  <meta content="yes" name="apple-mobile-web-app-capable" /> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
+  <meta content="telephone=no" name="format-detection" /> 
+  <meta content="email=no" name="format-detection" /> 
+  <meta content="" name="pgv" /> 
+  <title>订单列表</title> 
+  <link href="css/footer.css" rel="stylesheet" type="text/css" /> 
+  <link href="base.css" rel="stylesheet" type="text/css" /> 
+  <link href="css/wap.css" rel="stylesheet" type="text/css" /> 
+  <link href="css/myOrder.css" rel="stylesheet" type="text/css" /> 
+  <link href="css/index.css" rel="stylesheet" type="text/css" /> 
+  <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script> 
+ </head> 
+ <body style="padding-bottom:110px;"> 
+  <div class="channel-nav three-nav"> 
+   <ul> 
+    <li class="active"><a href="javascript:void(0)">未完成</a></li> 
+    <li class=" finished"><a href="javascript:void(0)">已完成</a></li> 
+   </ul> 
+   <div class="borderD2"></div> 
+  </div> 
+  <!-- 已登录 --> 
+  <!-- 我的订单 start --> 
+  <div class="myOrder" style="padding-bottom:60px;"> 
+   <!-- 无订单 --> 
+   <div class="no-order text-center"> 
+    <p>您没有未完成的订单</p> 
+   </div> 
+   <!-- 显示抵扣金额最大的两张优惠券（如果有） start --> 
+   <!-- 显示抵扣金额最大的两张优惠券（如果有） end --> 
+   <div class="go-home-order text-center"> 
+    <div class="p10"></div> 
+    <a href="index.html">去下单</a> 
+   </div> 
+   <!-- 我的订单 end --> 
+   <!-- 分享领券 start --> 
+   <!-- 分享领券 end --> 
+   <!--继续下单弹窗 start--> 
+   <div id="order_cpm" style="display:none"> 
+    <div class="wx_mask"></div> 
+    <div class="wx_confirm cpm_list"> 
+     <div class="wx_confirm_inner cpm_list_inner"> 
+      <div class="close-cpm" onclick="closecpm()"></div> 
+      <div class="order-home"> 
+       <!-- ajax 填充 --> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <!--继续下单弹窗 end--> 
+   <script type="text/javascript">
+ function ordercpm(from_order_id, from_city_id){
+  if(!from_order_id || !from_city_id){
+    window.location = "";
+  }
+    var ajax_url = "" + from_order_id + '&from_city_id=' + from_city_id;
+     $.getJSON(ajax_url, function(resp){
+      if(resp.message.state == 1){
+        var html = resp.message.html;
+        if(html.indexOf('<ajax_success_return>') === 0){
+          html = html.replace(/<ajax_success_return>/gi, '');
+                $('#order_cpm div.order-home').html(html);
+                $('#order_cpm').show();
+        }else{
+          window.location = "";
+        }
+      }else{
+        window.location = "";
+      }
+     });
+ }
+
+function closecpm(){
+    $("#order_cpm").hide();
+}
+</script> 
+   <!--继续下单弹窗 end--> 
+   <!-- 返回顶部图标 start --> 
+   <div class="scroll" id="scroll" style="display:none;"> 
+    <img src="images/back_top.png" /> 
+   </div> 
+   <!-- 返回顶部图标 end --> 
+   <script type="text/javascript">
+    $('.no-order table').height($('body').height() - 54)
+    
+    var pindex = 2;
+    var show_more = "0";
+    
+    function add_title(msg){
+      $("#prompt").html(msg);
+    }
+    
+    function add_order_1(add_o,str){
+      str = str + add_o;
+      $("#add_order").html(str);
+      show_more = 1;
+      $("#prompt").hide();
+    }
+    
+    function showmore(pindex){
+      $("#prompt").show();
+      var str = $("#add_order").html(); 
+      submitData = {
+        pindex : pindex
+      };
+      $.post("",submitData,
+        function (data){
+          if (data.message.state == 1) {
+            add_order_1(data.message.add_order,str);
+          }else if(data.message.state == 0){
+            add_title(data.message.msg);
+          }
+        },"json")
+    }
+      
+    window.onscroll = function(){
+        var a = document.body.clientHeight;
+        var b = document.documentElement.scrollTop==0? document.body.scrollTop : document.documentElement.scrollTop;
+        var c = document.documentElement.scrollTop==0? document.body.scrollHeight : document.documentElement.scrollHeight;
+         //alert(a);alert(document.body.scrollTop );alert(document.documentElement.scrollHeight);
+         if(a+b+10>=c && show_more == 1){
+          show_more = 0;
+          showmore(pindex);
+          pindex ++;
+        }
+    }
+     
+    function payorder(order_id,status){
+        var paytype = $("#paytype_"+order_id).val();
+        var url = "";
+        var link = url+"status="+status+"&order_id="+order_id+"&paytype="+paytype;
+        window.location.href=link;
+    }
+    
+    function cancelno(){
+       $("#codFloat").hide();
+       $("#codFloat_1").hide();
+       return false;
+    }
+  </script> 
+   <!-- 已登录 end --> 
+   <!-- 页脚导航--> 
+   <footer id="footer"> 
+    <div class="borderD3"></div> 
+    <div class="fix-bottom"></div> 
+    <div class="bottomBox"> 
+     <div class="indexMsg"> 
+      <div class="indexMenu"> 
+       <a href="index.html"><span class=" home-index">首页</span></a> 
+       <a href="order_list.html"><span class=" Order-index-active">订单
+         <!-- <em class="hongdian"></em> --></span></a> 
+       <a href="my_icard.html"><span class="card-index">我的
+         <!-- <em class="hongdian"></em> --></span></a> 
+      </div> 
+     </div> 
+    </div> 
+   </footer> 
+  </div>
+ </body>
+</html>

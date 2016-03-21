@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x:hidden">
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /> 
+  <meta content="yes" name="apple-mobile-web-app-capable" /> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
+  <meta content="telephone=no" name="format-detection" /> 
+  <meta content="email=no" name="format-detection" /> 
+  <meta content="" name="pgv" /> 
+  <script src="js/jquery.min.js"></script>
+  <script src="js/price_helper.js"></script> 
+  <title>洗衣服务</title> 
+  <meta content="authenticity_token" name="csrf-param" /> 
+  <meta content="kfoIAbxQSPoQtxtLve7oui+t6LTZ+iG0pk8T869f4J8=" name="csrf-token" /> 
+  <!--Le HTML5 shim, for IE6-8 support of HTML elements-->
+  <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]--> 
+  <link href="css/cloth_prices.css" media="screen" rel="stylesheet" /> 
+ </head> 
+ <body class="gray_bg price-navbar" id="price_navbar" onmousewheel="" scroll="no"> 
+  <div class="order_weixin" id="orderurl">
+   <a class="nav_a active_nav" href="cloth_prices.html" id="by_cloth_wx">洗衣计价</a>
+   <a class="nav_a " href="home_prices.html" id="by_home_textile_wx">家纺计价</a>
+   <a class="nav_right " href="javascript:void(0)" id="by_bag_wx">按袋计价</a>
+  </div> 
+  <div id="container"> 
+   <div class="washing_cloth"> 
+    <div class="title"> 
+     <div class="text-center">
+      专业洗衣服务，72小时内送回
+     </div> 
+    </div> 
+    <div class="price_list"> 
+     <p class="p5" style="padding-top:0">按件计价</p> 
+     <div class="tab_nav_price" id="tab">
+      <span>9元/件</span>
+      <span>19元/件</span>
+      <span>29元/件</span>
+     </div> 
+     <div id="list"> 
+      <div class="price_div" id="content-2602"> 
+       <p>夏装（衬衫、T恤、裤装、长短裙等轻薄款，含：领带、围巾等配件）</p> 
+       <div class="block_pic"> 
+        <div class="pic">
+         <img alt="马甲" src="images/cloth/cloth_l1.jpg" /> 
+         <div>
+          马甲
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="长T恤" src="images/cloth/cloth_l2.jpg" /> 
+         <div>
+          长T恤
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="短T恤" src="images/cloth/cloth_l3.jpg" /> 
+         <div>
+          短T恤
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="衬衣" src="images/cloth/cloth_l4.jpg" /> 
+         <div>
+          衬衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="秋衣" src="images/cloth/cloth_l16.jpg" /> 
+         <div>
+          秋衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="背心" src="images/cloth/cloth_l5.jpg" /> 
+         <div>
+          背心
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="针织背心" src="images/cloth/cloth_l6.jpg" /> 
+         <div>
+          针织背心
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="短裤" src="images/cloth/cloth_l7.jpg" /> 
+         <div>
+          短裤
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="长裤" src="images/cloth/cloth_l8.jpg" /> 
+         <div>
+          长裤
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="半身短裙" src="images/cloth/cloth_l9.jpg" /> 
+         <div>
+          半身短裙
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="半身长裙" src="images/cloth/cloth_l10.jpg" /> 
+         <div>
+          半身长裙
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="领带" src="images/cloth/cloth_l11.jpg" /> 
+         <div>
+          领带
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="帽子" src="images/cloth/cloth_l12.jpg" /> 
+         <div>
+          帽子
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="休闲帽" src="images/cloth/cloth_l13.jpg" /> 
+         <div>
+          休闲帽
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="围巾" src="images/cloth/cloth_l14.jpg" /> 
+         <div>
+          围巾
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="丝巾" src="images/cloth/cloth_l15.jpg" /> 
+         <div>
+          丝巾
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="price_div" id="content-2603"> 
+       <p>春秋装（西装、夹克等普通外套、连衣裙）</p> 
+       <div class="block_pic"> 
+        <div class="pic">
+         <img alt="西服上衣" src="images/cloth/cloth_x1.jpg" /> 
+         <div>
+          西服上衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="西服夹克" src="images/cloth/cloth_x2.jpg" /> 
+         <div>
+          西服夹克
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="羊毛/羊绒背心" src="images/cloth/cloth_x3.jpg" /> 
+         <div>
+          羊毛/羊绒背心
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="羊绒/羊毛马甲" src="images/cloth/cloth_x4.jpg" /> 
+         <div>
+          羊绒/羊毛马甲
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="羽绒马甲/背心" src="images/cloth/cloth_x5.jpg" /> 
+         <div>
+          羽绒马甲/背心
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="棉马甲" src="images/cloth/cloth_x6.jpg" /> 
+         <div>
+          棉马甲
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="棉睡衣" src="images/cloth/cloth_x7.jpg" /> 
+         <div>
+          棉睡衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="毛衣" src="images/cloth/cloth_x8.jpg" /> 
+         <div>
+          毛衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="风衣" src="images/cloth/cloth_x9.jpg" /> 
+         <div>
+          风衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="运动休闲上衣" src="images/cloth/cloth_x10.jpg" /> 
+         <div>
+          运动休闲上衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="牛仔上衣" src="images/cloth/cloth_x11.jpg" /> 
+         <div>
+          牛仔上衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="冲锋衣（无内胆）" src="images/cloth/cloth_x12.jpg" /> 
+         <div>
+          冲锋衣（无内胆）
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="针织衫" src="images/cloth/cloth_x13.jpg" /> 
+         <div>
+          针织衫
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="亚麻上衣" src="images/cloth/cloth_x14.jpg" /> 
+         <div>
+          亚麻上衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="羊绒/羊毛衫" src="images/cloth/cloth_x15.jpg" /> 
+         <div>
+          羊绒/羊毛衫
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="连衣裙" src="images/cloth/cloth_x16.jpg" /> 
+         <div>
+          连衣裙
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="披肩" src="images/cloth/cloth_x17.jpg" /> 
+         <div>
+          披肩
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="毛领（单独洗）" src="images/cloth/cloth_x18.jpg" /> 
+         <div>
+          毛领（单独洗）
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="连体裤" src="images/cloth/cloth_x19.jpg" /> 
+         <div>
+          连体裤
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="price_div" id="content-2604"> 
+       <p>冬装大衣外套（羽绒服、棉服、羊毛羊绒外套等，含：旗袍）</p> 
+       <div class="block_pic"> 
+        <div class="pic">
+         <img alt="棉服上衣" src="images/cloth/cloth_q1.jpg" /> 
+         <div>
+          棉服上衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="棉夹克" src="images/cloth/cloth_q2.jpg" /> 
+         <div>
+          棉夹克
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="睡袍" src="images/cloth/cloth_q3.jpg" /> 
+         <div>
+          睡袍
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="羽绒服" src="images/cloth/cloth_q4.jpg" /> 
+         <div>
+          羽绒服
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="呢子外套" src="images/cloth/cloth_q5.jpg" /> 
+         <div>
+          呢子外套
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="羊绒/羊毛外套" src="images/cloth/cloth_q6.jpg" /> 
+         <div>
+          羊绒/羊毛外套
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="毛外套" src="images/cloth/cloth_q7.jpg" /> 
+         <div>
+          毛外套
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="唐装上衣" src="images/cloth/cloth_q8.jpg" /> 
+         <div>
+          唐装上衣
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="丝绸旗袍" src="images/cloth/cloth_q9.jpg" /> 
+         <div>
+          丝绸旗袍
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="冲锋衣（含内胆）" src="images/cloth/cloth_q10.jpg" /> 
+         <div>
+          冲锋衣（含内胆）
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="price_title">
+     &middot; 羽绒服、棉服等厚重衣物预计3-5天送回 
+     <div style="padding:0px 10px 10px 0px">
+      . 皮衣、裘衣预计7-9天送回
+     </div> 
+    </div> 
+   </div> 
+   <script>$(function(){
+  $(".tab_nav_price span").first().addClass("on").siblings().removeClass("on");
+  $("#list > .price_div").first().show().addClass('current_border').siblings().hide();
+  $(".tab_nav_price span").click(function(){
+    $("#list > .price_div").removeClass('current_border');
+    var index = $(".tab_nav_price span").index(this);
+    $(this).addClass("on").siblings().removeClass("on");
+    $("#list > .price_div").eq(index).show().addClass('current_border').siblings().hide();
+  });
+});</script>
+  </div> 
+  <div class="btn_yuyue" id="orderlink">
+   <a class="order-link" href="reservation.html" id="btn">预约取件</a>
+  </div> 
+ </body>
+</html>

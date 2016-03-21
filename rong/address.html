@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta charset="utf-8" /> 
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /> 
+  <meta content="yes" name="apple-mobile-web-app-capable" /> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
+  <meta content="telephone=no" name="format-detection" /> 
+  <meta content="email=no" name="format-detection" /> 
+  <meta content="" name="pgv" /> 
+  <title>常用地址</title> 
+  <link href="css/index.css" rel="stylesheet" type="text/css" /> 
+  <link href="css/base.css" rel="stylesheet" type="text/css" /> 
+  <link href="css/footer.css" rel="stylesheet" type="text/css" /> 
+  <link href="css/order.css" rel="stylesheet" type="text/css" media="all" /> 
+  <script src="js/jquery.min.js"></script> 
+  <script>window.jQuery || document.write('<script src="js/jquery-1.10.1.min.js">\x3C/script>')</script> 
+ </head> 
+ <body style="padding-bottom:60px;"> 
+  <div class="p5"></div> 
+  <div id="addr_wrap"> 
+   <div id="all_address"> 
+    <div data-role="content"> 
+     <table class="order-place-table swipe-delete" cellpadding="0" cellspacing="0" data-role="listview"> 
+      <tbody>
+       <tr id="address_list_2980700" class="address_list"> 
+        <td style="width:20px;background:#fff"></td> 
+        <td style="padding:0 0px"> 
+         <div class="ui-btn ui-icon-carat-r" href="my_icard.html" onclick="editAddress(this);"> 
+          <div> 
+           <span ontouchstart="" class="bigf address_text">东风</span> 
+           <span>13795257303</span> 
+          </div> 
+          <p ontouchstart="" class="address_text p_address">上海 普陀区 桃浦一村 301室</p> 
+          <img src="images/order_arrow.png" class="order_arrow" /> 
+         </div> 
+         <div class="behind"> 
+          <a class="delete-btn ui-btn " onclick="show_tip('2980700')"> <img src="images/address_delete.png" /></a> 
+         </div> 
+         <div class="borderD"></div> </td> 
+       </tr> 
+      </tbody>
+     </table> 
+     <div style="height:90px;color:#8a8a8a;text-align:right;padding:14px">
+      左划列表可删除地址
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- 确定删除 start --> 
+  <div id="confirm_win" style="display:none;" class="cod"> 
+   <div class="wx_mask"></div> 
+   <div class="wx_confirm"> 
+    <div class="wx_confirm_inner" style="padding:0% 0 0 0;width:100%"> 
+     <div class="wx_confirm_hd bigfont p30">
+       确定删除吗？ 
+     </div> 
+     <input type="hidden" id="delete_id" /> 
+     <div class="borderD"></div> 
+     <div class="wx_confirm_btns" style="position:relative"> 
+      <button type="cancel" onclick="close_tip();">取消</button> 
+      <button type="submit" onclick="del_address();">确定</button> 
+      <div class="borderL"></div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- 确定删除 end --> 
+  <div id="delete_address_show" style="height:60px; display:none;" class="cod"> 
+   <div class="wx_confirm "> 
+    <div class="wx_confirm_inner" id="wx_confirm_float"> 
+     <div class="wx_confirm_hd"> 
+      <div class="wx_confirm_tit" id="show_mes"></div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="fixed-bottom white-bg"> 
+   <a href="javascript:void(0)" target="_blank"> 
+    <div class="borderD2"></div> 
+    <div class="choose-time "> 
+     <img src="images/icon_add.png" /> 
+     <span class="am-button"> 添加地址</span> 
+    </div> </a> 
+  </div> 
+  <script type="text/javascript">
+	  var user_type = "20";
+	  if(user_type == 6){
+	    document.getElementById('selectAddress').addEventListener('click', function () {
+	        am.selectAddress(function (data) {
+	               data['address'] =  encodeURIComponent(data['address']);
+	                var url = "";
+	                window.location.href = url+"link_from=address_list&username="+data['fullname']+"&tel="+data['mobilePhone']+"&address="+data['address'];
+	        })
+	    }, false);
+	  }
+	  $(function() {
+	      var x;
+	      $('.swipe-delete tr div.ui-btn')
+	          .on('touchstart', function(e) {
+	
+	              $('.swipe-delete tr div.ui-btn').css('left', '0px') 
+	              $(e.currentTarget).addClass('open')
+	              x = e.originalEvent.targetTouches[0].pageX 
+	          })
+	          .on('touchmove', function(e) {
+	              var change = e.originalEvent.targetTouches[0].pageX - x
+	              change = Math.min(Math.max(-76, change), 0) 
+	              e.currentTarget.style.left = change + 'px'
+	              if (change < -4) disable_scroll() 
+	          })
+	          .on('touchend', function(e) {
+	              var left = parseInt(e.currentTarget.style.left)
+	              var new_left;
+	              if (left < -5) {
+	                  new_left = '-76px'
+	              } else {
+	                  
+	                  new_left = '0px'
+	              }
+	              // e.currentTarget.style.left = new_left
+	              $(e.currentTarget).animate({left: new_left}, 200)
+	              enable_scroll()
+	          });
+	
+	  });
+	  
+	  function prevent_default(e) {
+	      e.preventDefault();
+	  }
+	
+	  function disable_scroll() {
+	      $(document).on('touchmove', prevent_default);
+	  }
+	
+	  function enable_scroll() {
+	      $(document).unbind('touchmove', prevent_default)
+	  }
+	  
+	  function del_address(){
+	      $("#confirm_win").hide();
+		  var delete_id = $("#delete_id").val();
+		  var sign = "delete";
+		  var url = "";
+	      var submit_data = {address_id:delete_id,sign:sign};
+          $.post(url, submit_data, function(data){
+        	    var len = $('#addr_wrap tr.address_list:visible').length;
+        		if(len <= 1){
+                	// alter_to_url('地址删除成功', "");
+                  window.location = "";
+            	}else{
+                 	$('#address_list_' + delete_id).fadeOut(500, function(){
+                   		$(this).remove();
+                	});
+            	}
+          });
+	   }
+	   
+	   function show_tip(addr_id){
+			$("#confirm_win").show();
+			$("#delete_id").val(addr_id);
+	    
+			return false;
+		}
+	   
+	   function close_tip(){
+			$("#confirm_win").hide();
+			return false;
+		}
+	   
+	  function alert_1(title) {
+	    	$("#delete_address_show #show_mes").html(title);
+	    	$("#delete_address_show").show().delay(1500).hide(0);
+	  }
+	  
+	  function alter_to_url(title,url) {
+	      alert_1(title);
+	      setTimeout("window.location.href='" + url + "'", 500);
+	  }
+	  //跳转地址编辑页面
+	  function editAddress(o){
+		  var url = $(o).attr('href');
+		  window.location = url;
+	  }
+	</script> 
+ </body>
+</html>

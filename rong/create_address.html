@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta charset="utf-8" /> 
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /> 
+  <meta content="yes" name="apple-mobile-web-app-capable" /> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
+  <meta content="telephone=no" name="format-detection" /> 
+  <meta content="email=no" name="format-detection" /> 
+  <meta content="" name="pgv" /> 
+  <title>填写地址</title> 
+  <link href="css/base.css" rel="stylesheet" type="text/css" /> 
+  <link href="css/order.css" rel="stylesheet" type="text/css" /> 
+  <script src="js/jquery.min.js"></script> 
+  <script>window.jQuery || document.write('<script src="js/jquery-1.10.1.min.js">\x3C/script>');</script> 
+ </head> 
+ <body> 
+  <!-- 正在定位 start --> 
+  <section class="waiting"> 
+   <div class="wait-block"> 
+    <span id="wait_msg">正在定位</span> 
+    <em class="bounce1"></em>
+    <em class="bounce2"></em>
+    <em class="bounce3"></em> 
+   </div> 
+  </section> 
+  <!-- 正在定位 end --> 
+  <div id="mainWin" style="padding: 0"> 
+   <div class="space-split10"></div> 
+   <form method="post" action="" onsubmit="return checkform();"> 
+    <!-- 地址信息 start --> 
+    <div class="white-bg"> 
+     <div id="home_city" class="city_item"> 
+      <div id="home_city_wrap" class="city_select_wrap"> 
+       <select id="home_city_sel" class="city_select"> 
+          <option class="default" value="" disabled="disabled">请选择城市</option>
+          <option city_sn="city_0" value="北京">北京</option>
+          <option city_sn="city_1" value="上海" selected="selected">上海</option>
+          <option city_sn="city_2" value="深圳">深圳</option>
+          <option city_sn="city_3" value="天津">天津</option>
+          <option city_sn="city_4" value="武汉">武汉</option>
+          <option city_sn="city_5" value="西安">西安</option>
+          <option city_sn="city_6" value="南京">南京</option>
+          <option city_sn="city_7" value="杭州">杭州</option>
+          <option city_sn="city_8" value="苏州">苏州</option>
+          <option city_sn="city_9" value="宁波">宁波</option>
+          <option city_sn="city_10" value="成都">成都</option>
+          <option city_sn="city_11" value="广州">广州</option>
+          <option city_sn="city_12" value="青岛">青岛</option>
+          <option city_sn="city_13" value="福州">福州</option>
+          <option city_sn="city_14" value="无锡">无锡</option>
+          <option city_sn="city_15" value="重庆">重庆</option>
+          <option city_sn="city_16" value="济南">济南</option>
+          <option city_sn="city_17" value="石家庄">石家庄</option>
+          <option city_sn="city_18" value="厦门">厦门</option>
+          <option city_sn="city_19" value="南宁">南宁</option>
+          <option city_sn="city_20" value="沈阳">沈阳</option>
+          <option city_sn="city_21" value="长沙">长沙</option>
+          <option city_sn="city_22" value="徐州">徐州</option>
+          <option city_sn="city_23" value="常州">常州</option>
+          <option city_sn="city_24" value="哈尔滨">哈尔滨</option>
+          <option city_sn="city_25" value="株洲">株洲</option>
+          <option city_sn="city_26" value="佛山">佛山</option>
+          <option city_sn="city_27" value="太原">太原</option>
+          <option city_sn="city_28" value="廊坊">廊坊</option> 
+       </select> 
+      </div> 
+      <div class="city_item_title">
+       添加地址城市
+      </div> 
+     </div> 
+     <div class="m_input select y_hover" id="select_wrap" style="display: none;"> 
+      <div id="cmbCity_wrap" class="select y_hover after1"> 
+       <select id="cmbCity" class="J_city select_J_ytag" name="city"> 
+           <option class="default" value="" disabled="disabled">请选择城市</option>
+           <option city_sn="city_0" value="北京">北京</option>
+           <option city_sn="city_1" value="上海" selected="selected">上海</option>
+           <option city_sn="city_2" value="深圳">深圳</option>
+           <option city_sn="city_3" value="天津">天津</option>
+           <option city_sn="city_4" value="武汉">武汉</option>
+           <option city_sn="city_5" value="西安">西安</option>
+           <option city_sn="city_6" value="南京">南京</option>
+           <option city_sn="city_7" value="杭州">杭州</option>
+           <option city_sn="city_8" value="苏州">苏州</option>
+           <option city_sn="city_9" value="宁波">宁波</option>
+           <option city_sn="city_10" value="成都">成都</option>
+           <option city_sn="city_11" value="广州">广州</option>
+           <option city_sn="city_12" value="青岛">青岛</option>
+           <option city_sn="city_13" value="福州">福州</option>
+           <option city_sn="city_14" value="无锡">无锡</option>
+           <option city_sn="city_15" value="重庆">重庆</option>
+           <option city_sn="city_16" value="济南">济南</option>
+           <option city_sn="city_17" value="石家庄">石家庄</option>
+           <option city_sn="city_18" value="厦门">厦门</option>
+           <option city_sn="city_19" value="南宁">南宁</option>
+           <option city_sn="city_20" value="沈阳">沈阳</option>
+           <option city_sn="city_21" value="长沙">长沙</option>
+           <option city_sn="city_22" value="徐州">徐州</option>
+           <option city_sn="city_23" value="常州">常州</option>
+           <option city_sn="city_24" value="哈尔滨">哈尔滨</option>
+           <option city_sn="city_25" value="株洲">株洲</option>
+           <option city_sn="city_26" value="佛山">佛山</option>
+           <option city_sn="city_27" value="太原">太原</option>
+           <option city_sn="city_28" value="廊坊">廊坊</option> 
+        </select> 
+      </div> 
+      <div id="cmbArea_wrap" class="select y_hover after2" style="display: none;"> 
+       <div class="borderP"></div> 
+       <select id="cmbArea" class="J_area select_J_ytag" name="area"> 
+            <option class="default" value="">请选择区域</option>
+            <option class="city_1" value="杨浦区">杨浦区</option>
+            <option class="city_1" value="宝山区">宝山区</option>
+            <option class="city_1" value="闸北区">闸北区</option>
+            <option class="city_1" value="普陀区">普陀区</option>
+            <option class="city_1" value="虹口区">虹口区</option>
+            <option class="city_1" value="静安区">静安区</option>
+            <option class="city_1" value="黄浦区">黄浦区</option>
+            <option class="city_1" value="徐汇区">徐汇区</option>
+            <option class="city_1" value="长宁区">长宁区</option>
+            <option class="city_1" value="浦东新区">浦东新区</option>
+            <option class="city_1" value="闵行区">闵行区</option>
+            <option class="city_1" value="南桥镇">南桥镇</option>
+            <option class="city_1" value="松江新城">松江新城</option>
+            <option class="city_1" value="中山南二路以南、中山西路以东">中山南二路以南、中山西路以东</option>
+            <option class="city_1" value="中山西路以东">中山西路以东</option> 
+       </select> 
+      </div> 
+      <div class="clearBoth"></div> 
+     </div> 
+     <div class="borderD"></div> 
+     <div class="m_input m_input_5" style="margin-top: 10px"> 
+      <div class="input"> 
+       <span class="dingwei-icon " id="location_btn"><img src="images/dingwei.png" /></span> 
+       <input id="addr_name" name="address_line_1" type="text" placeholder="请输入小区名或者大厦名" readonly="readonly" value="" /> 
+      </div> 
+      <div class="borderD"></div> 
+     </div> 
+     <div class="m_input m_input_5" style="margin-bottom: 0"> 
+      <div class="input"> 
+       <textarea placeholder="请输入门牌号等详细地址" maxlength="50" id="detail" name="address_line_2" class="textarea-address"></textarea> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="borderD2"></div> 
+    <!-- 地址信息 end --> 
+    <div style="height: 10px; background: #f0f0f0"></div> 
+    <!-- 个人基本信息 start --> 
+    <div class="borderD2"></div> 
+    <section class="section_4" style="padding: 1px"> 
+     <div class="m_input m_input_5"> 
+      <div class="input" style="margin-top: 10px"> 
+       <input placeholder="您的姓名" value="" maxlength="30" id="username" name="username" class="address_input" /> 
+      </div> 
+     </div> 
+    </section> 
+    <div class="borderD2"></div> 
+    <div style="height: 10px; background: #f0f0f0"></div> 
+    <div class="borderD2"></div> 
+    <section class="section_4"> 
+     <div class="m_input m_input_5"> 
+      <div class="check-div">
+        女士 
+       <div class="label-radio"> 
+        <input type="radio" name="gender" id="lady" value="女士" checked="checked" class="gender" /> 
+        <label for="lady" name="lady"><b></b></label> 
+       </div> 
+      </div> 
+      <div class="check-div">
+        先生 
+       <div class="label-radio"> 
+        <input type="radio" name="gender" id="man" value="男士" class="gender" /> 
+        <label for="man" name="man"><b></b></label> 
+       </div> 
+      </div> 
+      <div class="clearBoth"></div> 
+      <div class="borderD"></div> 
+     </div> 
+     <div class="m_input m_input_5" style="margin-bottom:0"> 
+      <div class="input"> 
+       <input placeholder="手机号码" value="13795257303" id="tel" type="tel" maxlength="11" name="tel" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" class="cleartet need_clear" /> 
+       <span id="tel_clear" class="clearInput clearCommon" onclick="clearInput(this, 'tel');" style="display: none"></span> 
+      </div> 
+     </div> 
+    </section> 
+    <!-- 个人基本信息 end --> 
+    <!-- 保存 start --> 
+    <sectoin class="true-btn"> 
+     <div class=""> 
+      <input type="submit" class="btn_order y_hover J_ytag" id="save_address" value="保存" disabled="disabled" /> 
+     </div> 
+    </sectoin> 
+    <!-- 保存 end --> 
+   </form> 
+  </div> 
+  <!-- 搜索联想 start --> 
+  <section style="display: none;" id="searchWin"> 
+   <span onclick="showMainWin();" class="back-span"> <em class="back-icon"></em></span> 
+   <input placeholder="请输入小区或大厦名" type="text" id="searchInp" value="" class="search-text need_clear" /> 
+   <div class="borderD" style="margin-top: 10px"></div> 
+   <span id="searchInp_clear" onclick="clearInput(this, 'searchInp');" class="clearInput search-icon clearCommon" style="display: none"></span> 
+   <!-- 搜索结果列表 start --> 
+   <div id="searchList" class="searchList"> 
+    <!-- 搜索结果列表 --> 
+   </div> 
+   <!-- 搜索结果列表 end --> 
+   <!-- 用户输入地址 start --> 
+   <div id="userWin" style="display: none;"> 
+    <div class="tips_text">
+     没有想要的地址，尝试手动选择市、区
+    </div> 
+    <div class="m_input select y_hover" id="user_select_wrap"> 
+     <div class="select y_hover after1"> 
+        <select id="user_city" class="J_city select_J_ytag"> 
+           <option class="default" value="" disabled="disabled">请选择城市</option>
+           <option city_sn="city_0" value="北京">北京</option>
+           <option city_sn="city_1" value="上海" selected="selected">上海</option>
+           <option city_sn="city_2" value="深圳">深圳</option>
+           <option city_sn="city_3" value="天津">天津</option>
+           <option city_sn="city_4" value="武汉">武汉</option>
+           <option city_sn="city_5" value="西安">西安</option>
+           <option city_sn="city_6" value="南京">南京</option>
+           <option city_sn="city_7" value="杭州">杭州</option>
+           <option city_sn="city_8" value="苏州">苏州</option>
+           <option city_sn="city_9" value="宁波">宁波</option>
+           <option city_sn="city_10" value="成都">成都</option>
+           <option city_sn="city_11" value="广州">广州</option>
+           <option city_sn="city_12" value="青岛">青岛</option>
+           <option city_sn="city_13" value="福州">福州</option>
+           <option city_sn="city_14" value="无锡">无锡</option>
+           <option city_sn="city_15" value="重庆">重庆</option>
+           <option city_sn="city_16" value="济南">济南</option>
+           <option city_sn="city_17" value="石家庄">石家庄</option>
+           <option city_sn="city_18" value="厦门">厦门</option>
+           <option city_sn="city_19" value="南宁">南宁</option>
+           <option city_sn="city_20" value="沈阳">沈阳</option>
+           <option city_sn="city_21" value="长沙">长沙</option>
+           <option city_sn="city_22" value="徐州">徐州</option>
+           <option city_sn="city_23" value="常州">常州</option>
+           <option city_sn="city_24" value="哈尔滨">哈尔滨</option>
+           <option city_sn="city_25" value="株洲">株洲</option>
+           <option city_sn="city_26" value="佛山">佛山</option>
+           <option city_sn="city_27" value="太原">太原</option>
+           <option city_sn="city_28" value="廊坊">廊坊</option> 
+        </select> 
+     </div> 
+     <div class="select y_hover after2"> 
+      <div class="borderP"></div> 
+        <select id="user_area" class="J_area select_J_ytag"> 
+            <option class="default" value="">请选择区域</option>
+            <option class="city_1" value="杨浦区">杨浦区</option>
+            <option class="city_1" value="宝山区">宝山区</option>
+            <option class="city_1" value="闸北区">闸北区</option>
+            <option class="city_1" value="普陀区">普陀区</option>
+            <option class="city_1" value="虹口区">虹口区</option>
+            <option class="city_1" value="静安区">静安区</option>
+            <option class="city_1" value="黄浦区">黄浦区</option>
+            <option class="city_1" value="徐汇区">徐汇区</option>
+            <option class="city_1" value="长宁区">长宁区</option>
+            <option class="city_1" value="浦东新区">浦东新区</option>
+            <option class="city_1" value="闵行区">闵行区</option>
+            <option class="city_1" value="南桥镇">南桥镇</option>
+            <option class="city_1" value="松江新城">松江新城</option>
+            <option class="city_1" value="中山南二路以南、中山西路以东">中山南二路以南、中山西路以东</option>
+            <option class="city_1" value="中山西路以东">中山西路以东</option> 
+        </select> 
+     </div> 
+    </div> 
+    <div class="borderD"></div> 
+    <div class="true-btn"> 
+     <input type="button" class="btn_order y_hover J_ytag" id="confirm_address" value="确定" /> 
+    </div> 
+   </div> 
+   <!-- 用户输入地址 end --> 
+  </section> 
+  <!-- 搜索联想  end --> 
+  <!-- 信息提示浮层 start --> 
+  <div id="codFloat" style="height:60px; display:none;" class="cod"> 
+   <div class="wx_mask"></div> 
+   <div class="wx_confirm "> 
+    <div class="wx_confirm_inner" id="wx_confirm_float"> 
+     <div class="wx_confirm_hd"> 
+      <div class="wx_confirm_tit" id="show_mes" style="font-size: 14px; line-height: 22px"> 
+       <!-- 提示信息 --> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- 信息提示浮层 end --> 
+  <!-- 所有区域选项列表 start --> 
+  <section id="area_options_list" style="display:none;"> 
+   <option class="city_0" value="朝阳区">朝阳区</option>
+   <option class="city_0" value="海淀区">海淀区</option>
+   <option class="city_0" value="东城区">东城区</option>
+   <option class="city_0" value="西城区">西城区</option>
+   <option class="city_0" value="丰台区">丰台区</option>
+   <option class="city_0" value="石景山区">石景山区</option>
+   <option class="city_0" value="昌平区">昌平区</option>
+   <option class="city_0" value="通州区">通州区</option>
+   <option class="city_0" value="房山区">房山区</option>
+   <option class="city_0" value="大兴区">大兴区</option>
+   <option class="city_0" value="顺义区">顺义区</option>
+   <option class="city_0" value="回龙观（昌平区）">回龙观（昌平区）</option>
+   <option class="city_0" value="天通苑（昌平区）">天通苑（昌平区）</option>
+   <option class="city_0" value="城区（昌平区）">城区（昌平区）</option>
+   <option class="city_0" value="亦庄（大兴区）">亦庄（大兴区）</option>
+   <option class="city_0" value="良乡（房山区）">良乡（房山区）</option>
+   <option class="city_0" value="黄村（大兴区）">黄村（大兴区）</option>
+   <option class="city_0" value="县城（顺义区）">县城（顺义区）</option>
+   <option class="city_1" value="杨浦区">杨浦区</option>
+   <option class="city_1" value="宝山区">宝山区</option>
+   <option class="city_1" value="闸北区">闸北区</option>
+   <option class="city_1" value="普陀区">普陀区</option>
+   <option class="city_1" value="虹口区">虹口区</option>
+   <option class="city_1" value="静安区">静安区</option>
+   <option class="city_1" value="黄浦区">黄浦区</option>
+   <option class="city_1" value="徐汇区">徐汇区</option>
+   <option class="city_1" value="长宁区">长宁区</option>
+   <option class="city_1" value="浦东新区">浦东新区</option>
+   <option class="city_1" value="闵行区">闵行区</option>
+   <option class="city_1" value="南桥镇">南桥镇</option>
+   <option class="city_1" value="松江新城">松江新城</option>
+   <option class="city_1" value="中山南二路以南、中山西路以东">中山南二路以南、中山西路以东</option>
+   <option class="city_1" value="中山西路以东">中山西路以东</option>
+   <option class="city_2" value="南山区">南山区</option>
+   <option class="city_2" value="福田区">福田区</option>
+   <option class="city_2" value="罗湖区">罗湖区</option>
+   <option class="city_2" value="宝安区">宝安区</option>
+   <option class="city_2" value="龙岗区">龙岗区</option>
+   <option class="city_2" value="龙华新区（宝安区）">龙华新区（宝安区）</option>
+   <option class="city_2" value="盐田区">盐田区</option>
+   <option class="city_2" value="布吉区">布吉区</option>
+   <option class="city_2" value="坂田区">坂田区</option>
+   <option class="city_2" value="横岗区">横岗区</option>
+   <option class="city_2" value="观澜区">观澜区</option>
+   <option class="city_3" value="塘沽区（滨海新区）">塘沽区（滨海新区）</option>
+   <option class="city_3" value="滨海新区">滨海新区</option>
+   <option class="city_3" value="南开区">南开区</option>
+   <option class="city_3" value="河西区">河西区</option>
+   <option class="city_3" value="和平区">和平区</option>
+   <option class="city_3" value="红桥区">红桥区</option>
+   <option class="city_3" value="河北区">河北区</option>
+   <option class="city_3" value="河东区">河东区</option>
+   <option class="city_3" value="东丽区">东丽区</option>
+   <option class="city_3" value="北辰区">北辰区</option>
+   <option class="city_3" value="环内（东丽区）">环内（东丽区）</option>
+   <option class="city_3" value="环内（北辰区）">环内（北辰区）</option>
+   <option class="city_3" value="津南区">津南区</option>
+   <option class="city_3" value="西青区">西青区</option>
+   <option class="city_4" value="洪山区">洪山区</option>
+   <option class="city_4" value="武昌区">武昌区</option>
+   <option class="city_4" value="青山区">青山区</option>
+   <option class="city_4" value="江岸区">江岸区</option>
+   <option class="city_4" value="硚口区">硚口区</option>
+   <option class="city_4" value="江汉区">江汉区</option>
+   <option class="city_4" value="汉阳区">汉阳区</option>
+   <option class="city_5" value="高新区（长安区）">高新区（长安区）</option>
+   <option class="city_5" value="高新区（雁塔区）">高新区（雁塔区）</option>
+   <option class="city_5" value="莲湖区">莲湖区</option>
+   <option class="city_5" value="碑林区">碑林区</option>
+   <option class="city_5" value="雁塔区">雁塔区</option>
+   <option class="city_5" value="长安区">长安区</option>
+   <option class="city_5" value="未央区">未央区</option>
+   <option class="city_5" value="新城区">新城区</option>
+   <option class="city_5" value="灞桥区">灞桥区</option>
+   <option class="city_6" value="秦淮区">秦淮区</option>
+   <option class="city_6" value="鼓楼区">鼓楼区</option>
+   <option class="city_6" value="栖霞区">栖霞区</option>
+   <option class="city_6" value="玄武区">玄武区</option>
+   <option class="city_6" value="江宁区城区">江宁区城区</option>
+   <option class="city_6" value="建邺区（不含江心洲）">建邺区（不含江心洲）</option>
+   <option class="city_6" value="雨花台区（秦淮新河以北）">雨花台区（秦淮新河以北）</option>
+   <option class="city_6" value="浦口区">浦口区</option>
+   <option class="city_6" value="六合区（大厂片区）">六合区（大厂片区）</option>
+   <option class="city_7" value="西湖区">西湖区</option>
+   <option class="city_7" value="下城区">下城区</option>
+   <option class="city_7" value="拱墅区">拱墅区</option>
+   <option class="city_7" value="下沙经济技术开发区（江干区）">下沙经济技术开发区（江干区）</option>
+   <option class="city_7" value="滨江区">滨江区</option>
+   <option class="city_7" value="萧山区">萧山区</option>
+   <option class="city_7" value="余杭区">余杭区</option>
+   <option class="city_7" value="上城区">上城区</option>
+   <option class="city_8" value="高新区（虎丘区）">高新区（虎丘区）</option>
+   <option class="city_8" value="姑苏区">姑苏区</option>
+   <option class="city_8" value="工业园区（吴中区）">工业园区（吴中区）</option>
+   <option class="city_8" value="吴中区">吴中区</option>
+   <option class="city_8" value="相城区">相城区</option>
+   <option class="city_9" value="江东区">江东区</option>
+   <option class="city_9" value="海曙区">海曙区</option>
+   <option class="city_9" value="镇海区">镇海区</option>
+   <option class="city_9" value="鄞州中心区（西起奉化江，东至福庆路，南到鄞州大道，北至甬江）(鄞州区)">鄞州中心区（西起奉化江，东至福庆路，南到鄞州大道，北至甬江）(鄞州区)</option>
+   <option class="city_9" value="江北区">江北区</option>
+   <option class="city_9" value="高新区（鄞州区）">高新区（鄞州区）</option>
+   <option class="city_9" value="高新区（江东区）">高新区（江东区）</option>
+   <option class="city_9" value="大碶镇（北仑区）">大碶镇（北仑区）</option>
+   <option class="city_9" value="新碶镇（北仑区）">新碶镇（北仑区）</option>
+   <option class="city_9" value="北仑中心区（北仑区）">北仑中心区（北仑区）</option>
+   <option class="city_10" value="武侯区">武侯区</option>
+   <option class="city_10" value="双流县">双流县</option>
+   <option class="city_10" value="锦江区">锦江区</option>
+   <option class="city_10" value="成华区">成华区</option>
+   <option class="city_10" value="青羊区">青羊区</option>
+   <option class="city_10" value="金牛区">金牛区</option>
+   <option class="city_10" value="郫县">郫县</option>
+   <option class="city_10" value="新都区">新都区</option>
+   <option class="city_10" value="温江区">温江区</option>
+   <option class="city_10" value="龙泉驿区">龙泉驿区</option>
+   <option class="city_11" value="天河区">天河区</option>
+   <option class="city_11" value="越秀区">越秀区</option>
+   <option class="city_11" value="荔湾区">荔湾区</option>
+   <option class="city_11" value="海珠区">海珠区</option>
+   <option class="city_11" value="白云区">白云区</option>
+   <option class="city_11" value="白云中心区">白云中心区</option>
+   <option class="city_11" value="番禺区（市桥以北）">番禺区（市桥以北）</option>
+   <option class="city_11" value="增城区（凤凰城碧桂园）">增城区（凤凰城碧桂园）</option>
+   <option class="city_11" value="萝岗区（萝岗东区）">萝岗区（萝岗东区）</option>
+   <option class="city_11" value="从化区（从化中心区）">从化区（从化中心区）</option>
+   <option class="city_12" value="市南区">市南区</option>
+   <option class="city_12" value="市北区">市北区</option>
+   <option class="city_12" value="李沧区">李沧区</option>
+   <option class="city_12" value="崂山区">崂山区</option>
+   <option class="city_12" value="黄岛区">黄岛区</option>
+   <option class="city_13" value="台江区">台江区</option>
+   <option class="city_13" value="仓山区">仓山区</option>
+   <option class="city_13" value="鼓楼区">鼓楼区</option>
+   <option class="city_13" value="晋安区">晋安区</option>
+   <option class="city_13" value="闽侯县">闽侯县</option>
+   <option class="city_14" value="崇安区">崇安区</option>
+   <option class="city_14" value="南长区">南长区</option>
+   <option class="city_14" value="滨湖区">滨湖区</option>
+   <option class="city_14" value="北塘区">北塘区</option>
+   <option class="city_14" value="新区（滨湖区）">新区（滨湖区）</option>
+   <option class="city_14" value="旺庄街道">旺庄街道</option>
+   <option class="city_14" value="坊前街道">坊前街道</option>
+   <option class="city_14" value="东亭街道">东亭街道</option>
+   <option class="city_14" value="云林街道">云林街道</option>
+   <option class="city_14" value="高新区（江阴市）">高新区（江阴市）</option>
+   <option class="city_15" value="渝中区">渝中区</option>
+   <option class="city_15" value="南岸区">南岸区</option>
+   <option class="city_15" value="江北区">江北区</option>
+   <option class="city_15" value="九龙坡区">九龙坡区</option>
+   <option class="city_15" value="沙坪坝区">沙坪坝区</option>
+   <option class="city_15" value="渝北区">渝北区</option>
+   <option class="city_15" value="大渡口区">大渡口区</option>
+   <option class="city_16" value="历下区">历下区</option>
+   <option class="city_16" value="历城区(二环北路以南、绕城高速以西、旅游路以北)">历城区(二环北路以南、绕城高速以西、旅游路以北)</option>
+   <option class="city_16" value="天桥区（二环北路以南）">天桥区（二环北路以南）</option>
+   <option class="city_16" value="市中区（二环南路以北）">市中区（二环南路以北）</option>
+   <option class="city_16" value="槐荫区（二环西路以东）">槐荫区（二环西路以东）</option>
+   <option class="city_17" value="裕华区">裕华区</option>
+   <option class="city_17" value="长安区">长安区</option>
+   <option class="city_17" value="高新区（裕华区）">高新区（裕华区）</option>
+   <option class="city_17" value="新华区二环内">新华区二环内</option>
+   <option class="city_17" value="桥西区二环内">桥西区二环内</option>
+   <option class="city_18" value="思明区">思明区</option>
+   <option class="city_18" value="湖里区">湖里区</option>
+   <option class="city_18" value="集美区">集美区</option>
+   <option class="city_19" value="青秀区">青秀区</option>
+   <option class="city_19" value="西乡塘区">西乡塘区</option>
+   <option class="city_19" value="江南区（普罗旺斯社区）">江南区（普罗旺斯社区）</option>
+   <option class="city_20" value="铁西区（二环内全覆盖）">铁西区（二环内全覆盖）</option>
+   <option class="city_20" value="皇姑区（二环内全覆盖）">皇姑区（二环内全覆盖）</option>
+   <option class="city_20" value="和平区（二环内全覆盖、长白岛地区）">和平区（二环内全覆盖、长白岛地区）</option>
+   <option class="city_20" value="沈河区（二环内全覆盖）">沈河区（二环内全覆盖）</option>
+   <option class="city_20" value="大东区（二环内全覆盖）">大东区（二环内全覆盖）</option>
+   <option class="city_20" value="浑南新区（大学城地区）">浑南新区（大学城地区）</option>
+   <option class="city_20" value="沈北新区（大学城地区）">沈北新区（大学城地区）</option>
+   <option class="city_20" value="于洪区（于洪广场）">于洪区（于洪广场）</option>
+   <option class="city_21" value="芙蓉区">芙蓉区</option>
+   <option class="city_21" value="天心区">天心区</option>
+   <option class="city_21" value="开福区">开福区</option>
+   <option class="city_21" value="雨花区">雨花区</option>
+   <option class="city_21" value="岳麓区">岳麓区</option>
+   <option class="city_22" value="黄楼街道">黄楼街道</option>
+   <option class="city_22" value="牌楼街道">牌楼街道</option>
+   <option class="city_22" value="九里街道">九里街道</option>
+   <option class="city_22" value="琵琶街道">琵琶街道</option>
+   <option class="city_22" value="丰财街道">丰财街道</option>
+   <option class="city_22" value="环城街道">环城街道</option>
+   <option class="city_22" value="铜沛街道">铜沛街道</option>
+   <option class="city_22" value="金山街道">金山街道</option>
+   <option class="city_22" value="翟山街道">翟山街道</option>
+   <option class="city_22" value="泰山街道">泰山街道</option>
+   <option class="city_22" value="湖滨街道">湖滨街道</option>
+   <option class="city_22" value="和平街道">和平街道</option>
+   <option class="city_22" value="段庄街道">段庄街道</option>
+   <option class="city_22" value="黄山街道">黄山街道</option>
+   <option class="city_22" value="彭城街道">彭城街道</option>
+   <option class="city_22" value="骆驼山街道">骆驼山街道</option>
+   <option class="city_22" value="天桥街道">天桥街道</option>
+   <option class="city_22" value="青年街道">青年街道</option>
+   <option class="city_22" value="金山桥街道">金山桥街道</option>
+   <option class="city_23" value="三井街道">三井街道</option>
+   <option class="city_23" value="河海街道">河海街道</option>
+   <option class="city_23" value="北港街道">北港街道</option>
+   <option class="city_23" value="五星街道">五星街道</option>
+   <option class="city_23" value="永红街道">永红街道</option>
+   <option class="city_23" value="新闸街道">新闸街道</option>
+   <option class="city_23" value="南大街街道">南大街街道</option>
+   <option class="city_23" value="青龙街道">青龙街道</option>
+   <option class="city_23" value="红梅街道">红梅街道</option>
+   <option class="city_23" value="茶山街道">茶山街道</option>
+   <option class="city_23" value="龙虎塘街道">龙虎塘街道</option>
+   <option class="city_23" value="荷花池街道">荷花池街道</option>
+   <option class="city_23" value="鸣凰街道">鸣凰街道</option>
+   <option class="city_23" value="马杭街道">马杭街道</option>
+   <option class="city_23" value="东城街道（金坛区）">东城街道（金坛区）</option>
+   <option class="city_23" value="西城街道（金坛区）">西城街道（金坛区）</option>
+   <option class="city_23" value="经济开发区（金坛区）">经济开发区（金坛区）</option>
+   <option class="city_23" value="溧阳市">溧阳市</option>
+   <option class="city_24" value="道里区">道里区</option>
+   <option class="city_24" value="通达街">通达街</option>
+   <option class="city_24" value="康安路">康安路</option>
+   <option class="city_24" value="道外区">道外区</option>
+   <option class="city_24" value="南岗区">南岗区</option>
+   <option class="city_24" value="香坊区">香坊区</option>
+   <option class="city_25" value="天元区">天元区</option>
+   <option class="city_25" value="芦淞区">芦淞区</option>
+   <option class="city_25" value="荷塘区">荷塘区</option>
+   <option class="city_26" value="祖庙街道">祖庙街道</option>
+   <option class="city_26" value="石湾街道">石湾街道</option>
+   <option class="city_26" value="张槎街道">张槎街道</option>
+   <option class="city_26" value="桂城街道">桂城街道</option>
+   <option class="city_27" value="小店区">小店区</option>
+   <option class="city_27" value="迎泽区">迎泽区</option>
+   <option class="city_27" value="杏花岭区">杏花岭区</option>
+   <option class="city_27" value="万柏林区">万柏林区</option>
+   <option class="city_27" value="尖草坪区">尖草坪区</option>
+   <option class="city_28" value="燕郊经济开发区">燕郊经济开发区</option>
+  </section> 
+  <!-- 所有区域选项列表 end --> 
+  <script type="text/javascript" src="js/address_locate.min.js?ts=v15"></script> 
+  <script type="text/javascript">
+/**
+ * @param {String}  errorMessage   错误信息
+ * @param {String}  scriptURI      出错的文件
+ * @param {Long}    lineNumber     出错代码的行号
+ */
+window.onerror = function(errorMessage, scriptURI, lineNumber) { 
+     return true;
+}
+ /**
+  * for manage_address.html 
+  * JQuery Code
+  */
+ //切换城市
+ $('#cmbCity').on('change', function(){
+     $('#cmbArea option.default').prop('selected', true);
+     var city_sn = $(this).find('option:selected').attr('city_sn');
+     var area_options = $('#area_options_list option.' + city_sn).clone(true);
+     $('#cmbArea option:not(.default)').remove();
+     $('#cmbArea').append(area_options);
+     resetLngLat();
+     setSaveBtn();
+ });
+ //用户体验差--待后期删除
+ $('#user_city').on('change', function(){
+     $('#user_area option.default').prop('selected', true);
+     var city_sn = $(this).find('option:selected').attr('city_sn');
+     var area_options = $('#area_options_list option.' + city_sn).clone(true);
+     $('#user_area option:not(.default)').remove();
+     $('#user_area').append(area_options);
+     setBtnStatus2();
+ });
+ //用户体验差--待后期删除
+ $('#user_area').on('change', function(){
+     setBtnStatus2();
+ });
+ //切换区域
+ $('#cmbArea').on('change', function(){
+     resetLngLat();
+     setSaveBtn();
+ });
+ //绑定定位方法
+ $('#location_btn').one('click', function(){
+     autoPostion();
+ });
+ // 绑定输入小区名称方法
+ $('#addr_name').on('click', function(){
+     showSearch();
+ });
+ //设置“清空”按钮状态
+ $('.need_clear').on('focus input blur', function(){
+     xbtnStatus(this);
+ });
+ //“确定”按钮绑定方法
+ $('#confirm_address').on('click', function(){
+     returnKeyword2();
+ });
+ //设置“确定”按钮状态
+ $('#searchInp').on('focus input blur', function(){
+     setBtnStatus2();
+ });
+ //设置“保存”按钮状态
+ $('#username, #tel, #addr_name, #detail').on('focus input blur', function(){
+     setSaveBtn();
+ });
+ $(":radio[name='gender']").on('change', function(){
+     setSaveBtn();
+ });
+ //绑定“自动完成”搜索框动作
+ $('#searchInp').on('input propertychange', function(){
+     autoSearch(this);
+ });
+ //初始化“清除”按钮状态
+ $('.need_clear').each(function(){
+     xbtnStatus(this);
+ });
+ //初始化“保存”按钮状态
+ setSaveBtn();
+</script> 
+ </body>
+</html>

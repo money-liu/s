@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8" /> 
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+  <meta content="email=no" name="format-detection" />
+  <meta content="" name="pgv" />
+  <title>价目指引</title>
+  <meta content="authenticity_token" name="csrf-param" /> 
+  <meta content="VIv2ILGdKtip0DNn/zKNhatUIoAg8dq99KiYm9IKnAI=" name="csrf-token" />
+  <!--Le HTML5 shim, for IE6-8 support of HTML elements-->
+  <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
+  <script src="js/application.js"></script>
+  <link href="css/mobile.css" media="screen" rel="stylesheet" />
+  <script>window.onload = function(){
+  if(isWeiXin()){
+    var orderbtn = document.getElementById('orderBtn');
+    orderbtn.style.display = "block";
+  }else{
+    var orderbtn = document.getElementById('orderBtn');
+    orderbtn.style.display = "none";
+  }
+}
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}</script>
+ </head>
+ <body style="background:#f8f8f8">
+  <div id="container">
+   <div class="flexslider service_box">
+    <ul class="slides">
+     <li class="service-guide1"><img alt="Price g1" src="images/price_g1.png" /></li>
+     <li class="service-guide2"><img alt="Price g2" src="images/price_g2.png" />
+      <div class="server-order-place" id="orderBtn">
+       <a href="reservation.html">立即下单</a>
+      </div></li>
+    </ul>
+   </div>
+   <script>$(document).ready(function(){
+  $('.flexslider').flexslider({
+    directionNav: false,
+    pauseOnAction: false,
+  });
+});</script>
+  </div>
+  <script>$(".service_box,.service_box li").height($(window).height())
+$(".shechipin-index").height($(window).height())</script>
+ </body>
+</html>

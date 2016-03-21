@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta charset="utf-8" /> 
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /> 
+  <meta content="yes" name="apple-mobile-web-app-capable" /> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
+  <meta content="telephone=no" name="format-detection" /> 
+  <meta content="email=no" name="format-detection" /> 
+  <meta content="" name="pgv" /> 
+  <title>个人中心</title> 
+  <link rel="stylesheet" type="text/css" href="css/card.css" media="all" /> 
+  <link href="css/footer.css" rel="stylesheet" type="text/css" /> 
+  <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+ </head>  
+ <body id="card" ondragstart="return false;" onselectstart="return false;" class="white_bg" style="padding-bottom:54px;"> 
+  <div class="card" id="icard"> 
+   <img src="images/center_banner.png" class="card-bg-card" /> 
+   <img src="images/avatar.png" class="edaixi_logo" /> 
+   <div class="loginInfo"> 
+    <h4><a href="logo.html">立即登录</a></h4> 
+    <p>洗衣就用e袋洗 幸福生活每一天</p> 
+    <i class="link-chongzhi" style="padding:5px 0;"><img alt=" " src="images/chongzhi_jt.png"></i>
+   </div> 
+  </div> 
+  <div class="clear"></div> 
+  <div class="borderD2"></div> 
+  <div style="height:14px"></div> 
+  <div class="cardexplain"> 
+   <ul class="round operate navlist"> 
+    <li class="mobile-font"> 
+     <table class="icardTable"> 
+      <tbody>
+       <tr> 
+        <td style="border:0;width:42px;"> <img alt="" src="images/changyong_add.png" /> </td> 
+        <td> <a href="create_address.html"> 
+          <div class="list-titel no-img">
+            常用地址 
+           <img alt="" src="images/rignt_icon.png" class="icon-right-card" /> 
+          </div> </a> 
+         <div class="borderD"></div> </td> 
+       </tr> 
+       <tr> 
+        <td style="border:0;width:42px;"> <img alt="" src="images/jifen_icon2.png" /> </td> 
+        <td style="position:relative"> 
+          <div class="list-titel no-img">
+            我的积分 
+              <div class="my_jifen">11125</div>
+          </div>
+         <div class="borderD" style=" margin-bottom: -4px;"></div> </td> 
+       </tr> 
+      </tbody>
+     </table> </li> 
+    <div class="borderD2"></div> 
+   </ul> 
+  </div> 
+  <div class="cardexplain"> 
+   <ul class="round operate navlist"> 
+    <li class="mobile-font"> 
+     <table class="icardTable"> 
+      <tbody>
+       <tr> 
+        <td style="border:0;width:42px;"> <img alt="" src="images/yijian_fank.png" /> </td> 
+        <td> <a href="feedback.html"> 
+          <div class="list-titel no-img">
+            意见反馈 
+           <img alt="" src="images/rignt_icon.png" class="icon-right-card" /> 
+          </div> </a> 
+         <div class="borderD"></div> </td> 
+       </tr> 
+       <tr> 
+        <td style="border:0;width:42px;"> <img alt="" src="images/question_icon2.png" /> </td> 
+        <td style="position:relative"> <a href="normal_question.html"> 
+          <div class="list-titel no-img">
+            常见问题 
+           <img alt="" src="images/rignt_icon.png" class="icon-right-card" /> 
+          </div> </a>
+         <div class="borderD"></div> 
+         </td> 
+       </tr> 
+       <tr> 
+        <td style="border:0;width:42px;"> <img alt="" src="images/hotline_icon2.png" /> </td> 
+        <td style="position:relative"> <a href="tel:400-818-7171"> 
+          <div class="list-titel no-img">
+            服务热线<b style="padding-left:20px">400-818-7171</b> 
+          </div> </a>
+         <div class="borderD"></div> 
+         </td> 
+       </tr> 
+       <tr> 
+        <td style="border:0;width:42px;"> <img alt="" src="images/user_xieyi2.png" /> </td> 
+        <td style="position:relative"> <a href="user_agreement.html)"> 
+          <div class="list-titel no-img">
+            用户协议 
+           <img alt="" src="images/rignt_icon.png" class="icon-right-card" /> 
+          </div> </a>
+         <div class="borderD" style=" margin-bottom: -4px;"></div> </td> 
+       </tr> 
+      </tbody>
+     </table> </li> 
+    <div class="borderD2"></div> 
+   </ul> 
+  </div> 
+  <div class="cardexplain">
+  <ul class="round operate navlist">  
+    <li class="tel-text">
+      <div><a href="tel:400-818-7171">客服 400-818-7171</a></div>
+    </li>
+  </ul>
+  <div class="borderD2"></div>
+</div>
+  <!-- ／我的订单 --> 
+  <script type="text/javascript">
+$('#feedback').on('click', function(){
+    sessionStorage.setItem('feedbook_from', window.location.href);
+    window.location.href = $(this).data('href');
+});
+</script> 
+  <!-- 页脚导航--> 
+  <footer id="footer"> 
+   <div class="borderD3"></div> 
+   <div class="fix-bottom"></div> 
+   <div class="bottomBox"> 
+    <div class="indexMsg"> 
+     <div class="indexMenu"> 
+      <a href="index.html"><span class=" home-index">首页</span></a> 
+      <a href="order_listAir.html"><span class=" Order-index">订单
+        <!-- <em class="hongdian"></em> --></span></a> 
+      <a href="my_icard.html"><span class="card-index-active">我的
+        <!-- <em class="hongdian"></em> --></span></a> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+ </body>
+</html>

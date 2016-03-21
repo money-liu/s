@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x:hidden">
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /> 
+  <meta content="yes" name="apple-mobile-web-app-capable" /> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
+  <meta content="telephone=no" name="format-detection" /> 
+  <meta content="email=no" name="format-detection" /> 
+  <meta content="" name="pgv" /> 
+  <script src="js/jquery.min.js"></script>
+  <script src="js/price_helper.js"></script> 
+  <title>洗衣服务</title> 
+  <meta content="authenticity_token" name="csrf-param" /> 
+  <meta content="RVRyhdiXNRBMLtwj/zo2KZ/gZuK+clSBmPasfyqE+5s=" name="csrf-token" /> 
+  <!--Le HTML5 shim, for IE6-8 support of HTML elements-->
+  <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]--> 
+  <link href="css/cloth_prices.css" media="screen" rel="stylesheet" /> 
+ </head> 
+ <body class="gray_bg price-navbar" id="price_navbar" onmousewheel="" scroll="no"> 
+  <div class="order_weixin" id="orderurl">
+   <a class="nav_a " href="cloth_prices.html" id="by_cloth_wx">洗衣计价</a>
+   <a class="nav_a active_nav" href="home_prices.html" id="by_home_textile_wx">家纺计价</a>
+   <a class="nav_right " href="javascript:void(0)" id="by_bag_wx">按袋计价</a>
+  </div> 
+  <div id="container"> 
+   <div class="washing_cloth"> 
+    <div class="title"> 
+     <div class="text-center">
+      专业家纺洗涤，72小时内送回，部分家纺7天送回
+     </div> 
+    </div> 
+    <div class="price_list"> 
+     <p class="p5" style="padding-top:0">按件计价</p> 
+     <div class="tab_nav_price" id="tab">
+      <span>9元/件</span>
+      <span>19元/件</span>
+      <span>29元/件</span>
+      <span>69元/件</span>
+     </div> 
+     <div id="list"> 
+      <div class="price_div" id="content-2605"> 
+       <div class="block_pic"> 
+        <div class="pic">
+         <img alt="毛巾" src="images/home/home_l1.jpg" /> 
+         <div>
+          毛巾
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="枕巾" src="images/home/home_l2.jpg" /> 
+         <div>
+          枕巾
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="枕套" src="images/home/home_l3.jpg" /> 
+         <div>
+          枕套
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="床单" src="images/home/home_l4.jpg" /> 
+         <div>
+          床单
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="price_div" id="content-2606"> 
+       <div class="block_pic"> 
+        <div class="pic">
+         <img alt="浴巾" src="images/home/home_k1.jpg" /> 
+         <div>
+          浴巾
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="抱枕" src="images/home/home_k2.jpg" /> 
+         <div>
+          抱枕
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="靠被" src="images/home/home_k3.jpg" /> 
+         <div>
+          靠被
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="被罩" src="images/home/home_k4.jpg" /> 
+         <div>
+          被罩
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="包（非皮质小于等于40cm）" src="images/home/home_k5.jpg" /> 
+         <div>
+          包（非皮质小于等于40cm）
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="price_div" id="content-2607"> 
+       <div class="block_pic"> 
+        <div class="pic">
+         <img alt="沙发套/位" src="images/home/home_j1.jpg" /> 
+         <div>
+          沙发套/位
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="汽车坐垫（棉麻）" src="images/home/home_j2.jpg" /> 
+         <div>
+          汽车坐垫（棉麻）
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="包（非皮质大于40cm）" src="images/home/home_j3.jpg" /> 
+         <div>
+          包（非皮质大于40cm）
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="毛绒玩具（小于50cm）" src="images/home/home_j4.jpg" /> 
+         <div>
+          毛绒玩具（小于50cm）
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="price_div" id="content-2608"> 
+       <div class="block_pic"> 
+        <div class="pic">
+         <img alt="毛毯" src="images/home/home_h1.jpg" /> 
+         <div>
+          毛毯
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="夏凉被" src="images/home/home_h2.jpg" /> 
+         <div>
+          夏凉被
+         </div> 
+        </div> 
+        <div class="pic">
+         <img alt="春秋被" src="images/home/home_h3.jpg" /> 
+         <div>
+          春秋被
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <script>$(function(){
+  $(".tab_nav_price span").first().addClass("on").siblings().removeClass("on");
+  $("#list > .price_div").first().show().addClass('current_border').siblings().hide();
+  $(".tab_nav_price span").click(function(){
+    $("#list > .price_div").removeClass('current_border');
+    var index = $(".tab_nav_price span").index(this);
+    $(this).addClass("on").siblings().removeClass("on");
+    $("#list > .price_div").eq(index).show().addClass('current_border').siblings().hide();
+  });
+});</script>
+  </div> 
+  <div class="btn_yuyue" id="orderlink">
+   <a class="order-link" href="reservation.html" id="btn">预约取件</a>
+  </div> 
+ </body>
+</html>
